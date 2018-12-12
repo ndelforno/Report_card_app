@@ -2,10 +2,19 @@
 <h1>Students index</h1>
 
 <% @students.each do |student| %>
-Student Id: <%= student.student_id %>, name: <%= student.name %>
+  Student Id: <%= student.student_id %>, name: <%= student.name %>
+  <br>
+  total Average: <%=  %><br>
+  <% marks = @marks.where(student_id: student.student_id)  %>
+  <% student_marks = [] %>
+  <%marks.each do |mark|%>
+    <br>
+    <% test = @tests.find_by(test_id: mark.test_id)%>
+    <% course = @courses.find_by(course_id: test.course_id)%>
+    <% student_marks << {"#{course.name}" => mark.mark * test.weight} %>
+    Course: <%= course.name %>, Teacher: <%= course.teacher %>
+    Mark: <%= mark.mark %> <br>
+  <% end  %>
 <br>
-<% marks = @marks.where(student_id: student.student_id)  %>
-<% average = marks.map(&:mark).sum / marks.length %>
-total Average: <%= average %>%
 <br>
 <% end  %>
