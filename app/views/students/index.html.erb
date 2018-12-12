@@ -1,2 +1,9 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+
+<h1>Students index</h1>
+
+<% @students.each do |student| %>
+name: <%= student.name %>
+  <% student.marks.each do |mark| %>
+  <%= mark.mark %>
+  <% end %>
+<% end  %>
