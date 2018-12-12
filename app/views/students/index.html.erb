@@ -1,12 +1,13 @@
 
 <h1>Students index</h1>
 
-<% @students.each do |student| %>
+<% @students.drop(1).each do |student| %>
   Student Id: <%= student.student_id %>, name: <%= student.name %>
   <br>
-  total Average: <%=  %><br>
   <% marks = @marks.where(student_id: student.student_id)  %>
+  <% marks %>
   <% student_marks = [] %>
+  total Average: <% %><br>
   <%marks.each do |mark|%>
     <br>
     <% test = @tests.find_by(test_id: mark.test_id)%>
