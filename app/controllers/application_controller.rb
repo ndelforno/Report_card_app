@@ -32,9 +32,9 @@ Test.destroy_all
 
   CSV.foreach('tests.csv') do |row|
     Test.create(
+      test_id: row[0],
       course_id: row[1],
-      weight: row[2],
-      test_id: row[0]
+      weight: row[2]
     )
   end
 

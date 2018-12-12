@@ -2,8 +2,10 @@
 <h1>Students index</h1>
 
 <% @students.each do |student| %>
-name: <%= student.name %>
-  <% student.marks.each do |mark| %>
-  <%= mark.mark %>
-  <% end %>
+Student Id: <%= student.student_id %>, name: <%= student.name %>
+<br>
+<% marks = @marks.where(student_id: student.student_id)  %>
+<% average = marks.map(&:mark).sum / marks.length %>
+total Average: <%= average %>%
+<br>
 <% end  %>
