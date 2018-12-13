@@ -1,19 +1,5 @@
-
-<h1>Report Cards</h1>
-
-<%= form_tag import_students_path, multipart: true, class: 'form-inline' do %>
-  <div class="form-group">
-    <%= file_field_tag :file, class: '' %>
-  </div>
-
-  <div class="form-group">
-    <%= submit_tag "Import CSV", class: 'btn btn-info' %>
-  </div>
-<% end %>
-
 <% @students.drop(1).each do |student| %>
-  <br>
-  <h2>Student Id: <%= student.student_id %>, name: <%= student.name %></h2>
+  Student Id: <%= student.student_id %>, name: <%= student.name %>
   <% marks = @marks.where(student_id: student.student_id)  %>
   <% student_marks = [] %>
   <% marks.each do |mark| %>
@@ -28,12 +14,10 @@
     <% total += v.to_i %>
     <% grade = v.to_f / 100 %>
     <% teacher_name = @courses.find_by(name: k).teacher %>
-    <p>Course: <%= k %>, Teacher: <%= teacher_name  %></p>
-    <p>Final Grade: <%= grade %>%<br></p>
+    Course: <%= k %>, Teacher: <%= teacher_name  %>
+    Final Grade: <%= grade %>%
     <% end  %>
-    <br>
+
   <% end %>
-  <h4>total Average: <%= (total.to_f/300).round(2) %>%</h4>
-  <br>
-  <br>
+  total Average: <%= (total.to_f/300).round(2) %>%
 <% end  %>

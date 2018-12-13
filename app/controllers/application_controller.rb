@@ -7,12 +7,13 @@ Mark.destroy_all
 Course.destroy_all
 Test.destroy_all
 
-  CSV.foreach('students.csv') do |row|
-    Student.create(
-      name: row[1],
-      student_id: row[0]
-    )
-  end
+
+  # CSV.foreach('students.csv') do |row|
+  #   Student.create(
+  #     name: row[1],
+  #     student_id: row[0]
+  #   )
+  # end
 
   CSV.foreach('marks.csv') do |row|
     Mark.create(
