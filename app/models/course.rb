@@ -2,7 +2,7 @@ class Course < ApplicationRecord
   has_many :tests
 
   def self.import(file)
-    CSV.foreach('courses.csv') do |row|
+    CSV.foreach(file.path) do |row|
       Course.create(
         name: row[1],
         teacher: row[2],

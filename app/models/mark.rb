@@ -1,7 +1,7 @@
 class Mark < ApplicationRecord
 
   def self.import(file)
-    CSV.foreach('marks.csv') do |row|
+    CSV.foreach(file.path) do |row|
       Mark.create(
         test_id: row[0],
         student_id: row[1],
@@ -9,5 +9,5 @@ class Mark < ApplicationRecord
       )
     end
   end
-  
+
 end
