@@ -13,7 +13,6 @@
     <% student_marks << {"#{course.name}" => mark.mark * test.weight, "weight" => test.weight} %>
   <% end  %>
   <% to_display = student_marks.group_by{|h| h.keys.first}.values.map{|a| { a.first.keys.first => a.inject(0){|sum, h| sum + h.values.first.to_i}.to_s }} %>
-  <% p to_display %>
   <% total = 0 %>
   <% to_display.each do |course| %>
     <% course.each do |k,v| %>
@@ -24,7 +23,7 @@
     <% end  %>
     <br>
   <% end %>
-  total Average: <%= total.to_f/300 %>%
+  total Average: <%= (total.to_f/300).round(2) %>%
   <br>
   <br>
 <% end  %>
