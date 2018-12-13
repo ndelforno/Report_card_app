@@ -1,16 +1,51 @@
 
 <h1>Report Cards</h1>
 
-<%= form_tag import_students_path, multipart: true, class: 'form-inline' do %>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
+
+<%= form_tag import_students_path, multipart: true do %>
   <div class="form-group">
     <%= file_field_tag :file, class: '' %>
   </div>
 
   <div class="form-group">
-    <%= submit_tag "Import CSV", class: 'btn btn-info' %>
+    <%= submit_tag "Import Students CSV"%>
   </div>
 <% end %>
+<br>
+<%= form_tag import_tests_path, multipart: true do %>
+  <div class="form-group">
+    <%= file_field_tag :file, class: '' %>
+  </div>
 
+  <div class="form-group">
+    <%= submit_tag "Import Tests CSV" %>
+  </div>
+<% end %>
+<br>
+<%= form_tag import_courses_path, multipart: true do %>
+  <div class="form-group">
+    <%= file_field_tag :file, class: '' %>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag "Import courses CSV"%>
+  </div>
+<% end %>
+<br>
+<%= form_tag import_marks_path, multipart: true do %>
+  <div class="form-group">
+    <%= file_field_tag :file, class: '' %>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag "Import Marks CSV"%>
+  </div>
+<% end %>
+<br>
 <% @students.drop(1).each do |student| %>
   <br>
   <h2>Student Id: <%= student.student_id %>, name: <%= student.name %></h2>

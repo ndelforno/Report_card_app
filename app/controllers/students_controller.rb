@@ -9,7 +9,8 @@ class StudentsController < ApplicationController
 
   def import
     Student.import(params[:file])
-    redirect_to root_url, notice: "Students imported."
+    flash[:notice] = "Students imported."
+    redirect_to root_url
   end
 
 end

@@ -6,4 +6,16 @@ Rails.application.routes.draw do
   resources :students do
     collection { post :import }
   end
+
+  resources :marks do
+    collection { post :import }
+  end
+
+  resources :courses do
+    collection { post :import }
+  end
+
+  resources :tests do
+    collection { post :import }
+  end
 end
