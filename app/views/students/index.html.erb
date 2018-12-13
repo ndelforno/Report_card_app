@@ -5,8 +5,9 @@
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 <br>
-
+<p>***Please import files in order***</p>
 <%= form_tag import_students_path, multipart: true do %>
+<h4>Students File:</h4>
   <div class="form-group">
     <%= file_field_tag :file, class: '' %>
   </div>
@@ -17,6 +18,7 @@
 <% end %>
 <br>
 <%= form_tag import_tests_path, multipart: true do %>
+<h4>Tests File:</h4>
   <div class="form-group">
     <%= file_field_tag :file, class: '' %>
   </div>
@@ -27,6 +29,7 @@
 <% end %>
 <br>
 <%= form_tag import_courses_path, multipart: true do %>
+<h4>Courses File:</h4>
   <div class="form-group">
     <%= file_field_tag :file, class: '' %>
   </div>
@@ -37,6 +40,7 @@
 <% end %>
 <br>
 <%= form_tag import_marks_path, multipart: true do %>
+<h4>Marks File:</h4>
   <div class="form-group">
     <%= file_field_tag :file, class: '' %>
   </div>
